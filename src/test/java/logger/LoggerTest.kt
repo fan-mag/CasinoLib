@@ -1,11 +1,13 @@
-import org.testng.annotations.BeforeMethod
+package logger
+
+import org.testng.annotations.BeforeClass
 import org.testng.annotations.Test
 import services.CasinoLibrary
 import services.Logger
 
 class LoggerTest {
 
-    @BeforeMethod
+    @BeforeClass
     fun prepareFixtures() {
         val propertiesPath = "src/test/resources/local.properties"
         CasinoLibrary.init(propertiesPath)
