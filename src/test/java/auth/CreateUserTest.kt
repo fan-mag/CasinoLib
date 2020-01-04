@@ -1,9 +1,7 @@
 package auth
 
-import generators.RandomString
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.Test
-import services.Auth
 import services.CasinoLibrary
 
 class CreateUserTest {
@@ -16,6 +14,6 @@ class CreateUserTest {
 
     @Test
     fun createUserTest() {
-        Auth.createUser(login = RandomString.generate(12), password = RandomString.generate(15))
+        //Auth.createUser(login = RandomString.generate(12), password = RandomString.generate(15))
     }
 }
