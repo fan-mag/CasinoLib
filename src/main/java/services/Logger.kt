@@ -8,12 +8,13 @@ object Logger : Runnable {
     @Volatile var service: String? = null
     @Volatile lateinit var message: String
 
-    @Synchronized
     fun log(service: String? = null, message: String) {
-        this.service = service
-        this.message = message
-        val thread = Thread(this)
-        thread.start()
+        synchronized(this) {
+            this.service = service
+            this.message = message
+            Thread(this).start()
+        }
+
     }
 
     override fun run() {
