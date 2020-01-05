@@ -5,8 +5,8 @@ import io.restassured.RestAssured.given
 
 object Logger : Runnable {
     lateinit var URL: String
-    var service: String? = null
-    lateinit var message: String
+    @Volatile var service: String? = null
+    @Volatile lateinit var message: String
 
     fun log(service: String? = null, message: String) {
         this.service = service
