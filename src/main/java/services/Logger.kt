@@ -3,18 +3,12 @@ package services
 import helpers.BodyBuilder
 import io.restassured.RestAssured.given
 
-object Logger : Runnable {
-    lateinit var URL: String
-    @Volatile var service: String? = null
-    @Volatile lateinit var message: String
+class Logger(val service: String?, val message: String) : Runnable {
 
-    fun log(service: String? = null, message: String) {
+    fun log() {
         synchronized(this) {
-            this.service = service
-            this.message = message
             Thread(this).start()
         }
-
     }
 
     override fun run() {
@@ -27,4 +21,10 @@ object Logger : Runnable {
                 .statusCode(200)
     }
 
+    companion object {
+        lateinit var URL: String
+        fun log(service: String? = null, message: String) {
+            Logger(service, message).log()
+        }
+    }
 }
