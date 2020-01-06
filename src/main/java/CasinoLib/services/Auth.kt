@@ -60,13 +60,14 @@ object Auth {
         when (response.statusCode()) {
             404 -> throw WrongApikeyProvidedException()
             200 -> {
-                return Gson().fromJson(response.body.asString(), Privilege::class.java) ?: throw UnknownError("null privilege")
+                return Gson().fromJson(response.body.asString(), Privilege::class.java)
+                        ?: throw UnknownError("null privilege")
             }
             else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
         }
     }
 
-    fun deleteUser(apikey: String, login: String, password: String) : Boolean {
+    fun deleteUser(apikey: String, login: String, password: String): Boolean {
         val response = given()
                 .baseUri(URL)
                 .contentType(ContentType.JSON)
@@ -78,8 +79,8 @@ object Auth {
             404 -> return false
             202 -> return true
             else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
+
         }
     }
-
 
 }
