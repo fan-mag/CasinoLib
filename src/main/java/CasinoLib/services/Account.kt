@@ -21,7 +21,6 @@ object Account {
                 .get()
         when (response.statusCode) {
             404 -> throw UserNotFoundException()
-            403 -> throw ForbiddenException()
             200 -> return Gson().fromJson(response.body.asString(), Amount::class.java)
             else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
         }
@@ -82,6 +81,7 @@ object Account {
                 .`when`()
                 .post()
         when (response.statusCode) {
+            422 -> throw NotEnoughMoney()
             404 -> throw UserNotFoundException()
             403 -> throw ForbiddenException()
             200 -> return Gson().fromJson(response.body.asString(), Amount::class.java)
