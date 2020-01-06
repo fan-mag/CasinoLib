@@ -1,14 +1,14 @@
 package auth
 
-import exceptions.UserNotAuthorizedException
-import exceptions.UserNotFoundException
+import CasinoLib.exceptions.UserNotAuthorizedException
+import CasinoLib.exceptions.UserNotFoundException
+import CasinoLib.model.User
+import CasinoLib.services.Auth
+import CasinoLib.services.CasinoLibrary
 import generators.RandomString
-import model.User
 import org.testng.Assert
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.Test
-import services.Auth
-import services.CasinoLibrary
 import kotlin.test.assertFailsWith
 
 class GetKeyTest {

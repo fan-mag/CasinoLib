@@ -1,9 +1,9 @@
 package logger
 
+import CasinoLib.services.CasinoLibrary
+import CasinoLib.services.Logger
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.Test
-import services.CasinoLibrary
-import services.Logger
 
 class LoggerTest {
 

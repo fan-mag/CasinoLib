@@ -1,15 +1,15 @@
-package services
+package CasinoLib.services
 
+import CasinoLib.exceptions.UserAlreadyExistsException
+import CasinoLib.exceptions.UserNotAuthorizedException
+import CasinoLib.exceptions.UserNotFoundException
+import CasinoLib.exceptions.WrongApikeyProvidedException
+import CasinoLib.helpers.BodyBuilder
+import CasinoLib.model.Privilege
+import CasinoLib.model.User
 import com.google.gson.Gson
-import exceptions.UserAlreadyExistsException
-import exceptions.UserNotAuthorizedException
-import exceptions.UserNotFoundException
-import exceptions.WrongApikeyProvidedException
-import helpers.BodyBuilder
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
-import model.Privilege
-import model.User
 
 object Auth {
     lateinit var URL: String

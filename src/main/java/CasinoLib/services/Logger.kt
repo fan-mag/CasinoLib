@@ -1,6 +1,6 @@
-package services
+package CasinoLib.services
 
-import helpers.BodyBuilder
+import CasinoLib.helpers.BodyBuilder
 import io.restassured.RestAssured.given
 import java.util.concurrent.Executors
 

@@ -1,8 +1,8 @@
-package helpers
+package CasinoLib.helpers
 
+import CasinoLib.model.Event
+import CasinoLib.model.User
 import com.google.gson.GsonBuilder
-import model.Event
-import model.User
 
 object BodyBuilder {
 

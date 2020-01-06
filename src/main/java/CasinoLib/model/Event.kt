@@ -1,4 +1,4 @@
-package model
+package CasinoLib.model
 
 import java.util.*
 

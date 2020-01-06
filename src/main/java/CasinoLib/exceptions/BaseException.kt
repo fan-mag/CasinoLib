@@ -1,6 +1,6 @@
-package exceptions
+package CasinoLib.exceptions
 
-import services.Logger
+import CasinoLib.services.Logger
 
 open class BaseException(message: String): RuntimeException(message) {
 
