@@ -1,3 +1,3 @@
 package exceptions
 
-class UserAlreadyExistsException: BaseException("Данный пользователь уже зарегистрирован")
+class UserAlreadyExistsException: BaseException("User is already registered")

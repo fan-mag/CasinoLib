@@ -1,3 +1,3 @@
 package exceptions
 
-class UserNotFoundException: BaseException("Пользователь не найден в системе")
+class UserNotFoundException: BaseException("User not found in the system")

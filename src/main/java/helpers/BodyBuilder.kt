@@ -20,4 +20,9 @@ object BodyBuilder {
         val user = User(login = login, password = password)
         return GsonBuilder().setPrettyPrinting().create().toJson(user)
     }
+
+    fun deleteUserBody(login: String, password: String): String {
+        val user = User(login = login, password = password)
+        return GsonBuilder().setPrettyPrinting().create().toJson(user)
+    }
 }

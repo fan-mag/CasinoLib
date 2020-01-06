@@ -1,4 +1,3 @@
 package exceptions
 
-class UserNotAuthorizedException: BaseException("Авторизация не удалась") {
-}
+class UserNotAuthorizedException: BaseException("Authentication failed")
