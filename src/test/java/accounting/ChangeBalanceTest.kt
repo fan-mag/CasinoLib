@@ -1,0 +1,4 @@
+package accounting
+
+class ChangeBalanceTest {
+}

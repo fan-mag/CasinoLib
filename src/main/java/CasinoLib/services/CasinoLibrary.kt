@@ -10,5 +10,6 @@ object CasinoLibrary {
         properties.load(FileReader(propertiesPath))
         Logger.URL = properties.getProperty("logger.url")
         Auth.URL = properties.getProperty("auth.url")
+        Account.URL = properties.getProperty("accnt.url")
     }
 }
