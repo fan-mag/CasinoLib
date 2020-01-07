@@ -9,7 +9,9 @@ object CasinoLibrary {
         val properties = Properties()
         properties.load(FileReader(propertiesPath))
         Logger.URL = properties.getProperty("logger.url")
+        Logger.BUFFER_SIZE = properties.getProperty("logger.buffer_size", "10").toInt()
         Auth.URL = properties.getProperty("auth.url")
         Account.URL = properties.getProperty("accnt.url")
+
     }
 }
