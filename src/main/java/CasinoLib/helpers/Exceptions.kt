@@ -4,9 +4,12 @@ import CasinoLib.services.Logger
 
 object Exceptions {
     fun handle(exception: Exception, service: String) {
-        if (exception.message != null)
+        if (exception.message != null) {
+            exception.printStackTrace()
             Logger.log(service = service, message = exception.message!!)
-        else
+        } else {
+            exception.printStackTrace()
             Logger.log(service = service, message = "Exception without any message")
+        }
     }
 }
