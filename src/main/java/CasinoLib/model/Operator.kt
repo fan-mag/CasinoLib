@@ -11,7 +11,7 @@ class Operator {
     lateinit var privilege: Privilege
 
     fun fromJson(): Operator {
-        return fromJson("src\\main\\resources\\operator.json")
+        return fromJson("src/main/resources/operator.json")
     }
 
     fun fromJson(filePath: String): Operator {
