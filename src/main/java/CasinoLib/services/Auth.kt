@@ -21,14 +21,14 @@ object Auth {
                 .body(BodyBuilder.createUserBody(login, password))
                 .`when`()
                 .post()
-        when (response.statusCode()) {
+        when (response.statusCode) {
             422 -> throw UserAlreadyExistsException()
             201 -> {
                 val user = Gson().fromJson(response.body.asString(), User::class.java)
                 return if (user.apikey != null) user.apikey!!
                 else throw UnknownError("Can't find user api key in createUser")
             }
-            else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
+            else -> throw UnknownError("Response code ${response.statusCode} can not be handled")
         }
     }
 
@@ -39,7 +39,7 @@ object Auth {
                 .body(BodyBuilder.getUserBody(login, password))
                 .`when`()
                 .put()
-        when (response.statusCode()) {
+        when (response.statusCode) {
             404 -> throw UserNotFoundException()
             401 -> throw UserNotAuthorizedException()
             200 -> {
@@ -47,7 +47,7 @@ object Auth {
                 return if (user.apikey != null) user.apikey!!
                 else throw UnknownError("Can't find user api key in getUserKey")
             }
-            else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
+            else -> throw UnknownError("Response code ${response.statusCode} can not be handled")
         }
     }
 
@@ -57,13 +57,13 @@ object Auth {
                 .header("apikey", apikey)
                 .`when`()
                 .get()
-        when (response.statusCode()) {
+        when (response.statusCode) {
             404 -> throw WrongApikeyProvidedException()
             200 -> {
                 return Gson().fromJson(response.body.asString(), Privilege::class.java)
                         ?: throw UnknownError("null privilege")
             }
-            else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
+            else -> throw UnknownError("Response code ${response.statusCode} can not be handled")
         }
     }
 
@@ -75,12 +75,25 @@ object Auth {
                 .body(BodyBuilder.deleteUserBody(login, password))
                 .`when`()
                 .delete()
-        when (response.statusCode()) {
+        when (response.statusCode) {
             404 -> return false
             202 -> return true
-            else -> throw UnknownError("Response code ${response.statusCode()} can not be handled")
+            else -> throw UnknownError("Response code ${response.statusCode} can not be handled")
 
         }
     }
 
+    fun getUserLogin(apikey: String) : String {
+        val response = given()
+                .baseUri(URL)
+                .contentType(ContentType.JSON)
+                .header("apikey", apikey)
+                .`when`()
+                .patch()
+        when (response.statusCode) {
+            404 -> throw UserNotFoundException()
+            200 -> return Gson().fromJson(response.body.asString(), User::class.java).login!!
+            else -> throw UnknownError("Response code ${response.statusCode} can not be handled")
+        }
+    }
 }
