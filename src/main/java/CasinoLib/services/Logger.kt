@@ -47,7 +47,6 @@ class Logger(val service: String?, val message: String) : Runnable {
             while (true) {
                 if (queueHasMembers) {
                     val currentTime = Date().time
-                    println("${currentTime - startTime}")
                     if (currentTime - startTime > timeout) {
                         Logger("Library", "Force push queue").push()
                     }
