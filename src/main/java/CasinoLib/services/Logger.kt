@@ -4,9 +4,9 @@ import CasinoLib.helpers.BodyBuilder
 import CasinoLib.model.Event
 import io.restassured.RestAssured.given
 import java.util.*
+import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.collections.ArrayList
 
 class Logger(val service: String?, val message: String) : Runnable {
 
@@ -62,7 +62,7 @@ class Logger(val service: String?, val message: String) : Runnable {
         lateinit var watcher: Watcher
         var BUFFER_SIZE: Int = 10
         lateinit var body: String
-        val buffer: ArrayList<Event> = ArrayList()
+        val buffer: CopyOnWriteArrayList<Event> = CopyOnWriteArrayList()
         val threadQueue: ExecutorService = Executors.newFixedThreadPool(1)
 
         fun log(service: String? = null, message: String) {

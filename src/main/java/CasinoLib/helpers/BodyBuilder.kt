@@ -4,10 +4,11 @@ import CasinoLib.model.Amount
 import CasinoLib.model.Event
 import CasinoLib.model.User
 import com.google.gson.GsonBuilder
+import java.util.concurrent.CopyOnWriteArrayList
 
 object BodyBuilder {
 
-    fun loggerBody(events: List<Event>): String {
+    fun loggerBody(events: CopyOnWriteArrayList<Event>): String {
         return GsonBuilder().create().toJson(events)
     }
 
