@@ -13,7 +13,7 @@ class Logger(val service: String?, val message: String) : Runnable {
     fun log() {
         buffer.add(Event(service = service, message = message))
         watcher.queueHasMembers = true
-        if (buffer.size == BUFFER_SIZE) {
+        if (buffer.size >= BUFFER_SIZE) {
             push()
         }
     }
